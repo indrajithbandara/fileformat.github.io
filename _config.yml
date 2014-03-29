@@ -6,3 +6,5 @@ exclude: [ "CNAME", "README.md", "LICENSE.txt", "tmp", "*.sh", "**/*_src*" ]
 permalink: /:year/:month/:day/:title/index.html
 production_url: http://blog.fileformat.info
 title : FileFormat.Info Blog
+gems:
+  - jekyll-redirect-from
