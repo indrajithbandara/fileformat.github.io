@@ -1,0 +1,49 @@
+---
+layout: default
+title: FileFormat.Info Blog
+---
+
+<style>
+.pin-title { }
+.pin-description {  }
+.pin-tag { display:none; }
+</style>
+
+<p>This is my blog for sharing things that I have learned while running <a href="http://www.fileformat.info/">FileFormat.Info</a>.</p>
+
+<div class="row">
+	<div class="col-md-9">
+		<div class="panel panel-default">
+			<div class="panel-heading">Recent Posts</div>
+			<div class="panel-body">
+			{% for page in site.posts %}{% if page.noindex %}{% else %}{% unless forloop.index > 5 %}
+				<p>{{page.date | date: "%Y-%m-%d" }} - <a href="{{ page.url }}">{{page.title}}</a></p>
+			{%endunless%}{% endif %}{% endfor %}
+				<a class="btn btn-default btn-xs" href="/support/archive.html">More...</a>
+			</div>
+		</div>
+		<div class="panel panel-default">
+			<div class="panel-heading">Recently Bootmarked</div>
+			<div class="panel-body">
+				<script language="javascript" src="http://pinboard.in//widgets/v1/linkroll/?user=fileformat&count=10&tag=tonews"></script>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-3">
+		<div class="panel panel-default">
+			<div class="panel-heading">Links</div>
+			<div class="panel-body">
+				<p><a href="http://www.digitalrosetta.org/" title="An offshoot of FileFormat.Info">Digital Rosetta Stone</a></p>
+				<p><a href="http://www.fileformat.info/" title="FileFormat.Info &#8211; the digital rosetta stone">FileFormat.Info</a></p>
+				<p><a href="http://www.hackerlogos.org/" title="Logos in standard sizes">HackerLogos</a></p>
+				<p><a href="http://www.labelmakr.com/" title="LabelMakr &#8211; make nice labels &amp; envelopes with no software install">LabelMakr</a></p>
+				<p><a href="http://www.localeplanet.com/">LocalePlanet</a></p>
+				<p><a href="http://www.numberplanet.com/" title="NumberPlanet &#8211; every number">NumberPlanet</a></p>
+				<p><a href="http://www.procrastinate.mobi/">Procrastinate.mobi</a></p>
+				<p><a href="http://www.redirect2www.com/" title="Static IP that redirects non-www to www">Redirect2www</a></p>
+				<p><a href="http://www.regexplanet.com/" title="RegexPlanet &#8211; online regular expression (regex) testing">RegexPlanet</a></p>
+				<p><a href="http://www.routingnumbers.info/">RoutingNumbers</a></p>
+			</div>
+		</div>
+	</div>
+</div>

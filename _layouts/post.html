@@ -10,7 +10,16 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-10 col-md-offset-1">
+				<div style="float:right;">
+				{% if page.previous.url %}
+					<a href="{{page.previous.url}}" title="Previous Post: {{page.previous.title}}">&lt;previous</a>
+				{% endif %}
+				{% if page.next.url %}
+					&nbsp;<a href="{{page.next.url}}" title="Next Post: {{page.next.title}}">next&gt;</a>
+				{% endif %}
+				</div>
 				<h1>{{ page.title }}</h1>
+				<p class="small">Posted on {{page.date | date: "%Y-%m-%d" }}</p>
 				{{ content }}
 			</div><!--/span-->
 		</div><!--/row-->
