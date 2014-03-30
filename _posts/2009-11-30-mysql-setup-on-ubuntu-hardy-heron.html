@@ -1,0 +1,26 @@
+---
+author: fileformat
+comments: true
+date: 2009-11-30 13:51:28+00:00
+layout: post
+slug: mysql-setup-on-ubuntu-hardy-heron
+title: MySQL Setup on Ubuntu Hardy Heron
+wordpress_id: 36
+tags:
+- mysql
+---
+<p>These are the instructions I use to setup a MySQL database server.</p>
+
+<p>Install Ubuntu Server, do not select a profile at the end.</p>
+<p>Install ssh and mysql.  It will ask for a root password.</p>
+
+<pre>apt-get install ssh mysql-server</pre>
+
+<p>Grant the root user access from across the network</p>
+<pre>mysql -p
+GRANT ALL ON *.* TO 'root'@'%' IDENTIFIED BY '<i>password</i>';
+</pre>
+
+<p>Tweek the config to listen on the network and to store each table in a separate file.  Edit <code>/etc/mysql/my.cnf</code> and in the <code>[mysqld]</code> section, comment out the existing <code>bind-address</code> and add one with the server's IP address, and add a line <code>innodb_file_per_table</code></p>
+
+<p>Restart the server daemon</p>

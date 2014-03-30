@@ -1,0 +1,33 @@
+---
+author: fileformat
+comments: true
+date: 2007-10-06 22:33:51+00:00
+layout: post
+slug: making-pdfs-on-debian-etch
+title: Making PDFs on Debian Etch
+wordpress_id: 27
+tags:
+- cups
+- cups-pdf
+- debian
+- linux
+- pdf
+- printing
+---
+
+This are my notes on setting up a PDF printer on Debian Etch for the local machine (i.e. not as shared printer).
+
+Install cups-pdf:
+
+sudo apt-get install cups-pdf
+
+Add a printer.  I find that the browser-based configuration works better than the GUI versions (Foomatic-GUI and Gnome CUPS Manager):
+<ul>
+	<li>browse to http://localhost:631/</li>
+	<li>Add a printer</li>
+	<li>Choose the type Generic postscript color printer rev4</li>
+	<li>Choose the location cups-pdf:/</li>
+</ul>
+The PDF files are put in a PDF subdirectory of your home directory (~/PDF).  However, if you print while logged in as root (for example, the test page from the web interface), the PDFs usually end up in /root/PDF but once I found it in /var/spool/cups-pdf/ANONYMOUS.
+
+One other thing to note is that it uses the title of the print job as the file name.  The title is set by the program that's printing, but if it is there is an existing file with the same name, it will overwrite it silently.  Generally this isn't an issue, but Firefox/Iceweasel uses the page &lt;title&gt; as the print job name, so if pages have generic/bad titles, you have to be careful.

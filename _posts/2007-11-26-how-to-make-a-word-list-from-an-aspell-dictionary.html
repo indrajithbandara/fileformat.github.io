@@ -1,0 +1,23 @@
+---
+author: fileformat
+comments: true
+date: 2007-11-26 02:25:56+00:00
+layout: post
+slug: how-to-make-a-word-list-from-an-aspell-dictionary
+title: How to make a word list from an aspell dictionary
+wordpress_id: 31
+tags:
+- aspell
+- iconv
+- sort
+- wordlist
+- words
+---
+
+<p>I am working on something that needs a list of words, without regard to american vs. british or accents or anything: it just has to be as many words as possible.  There are a whole bunch of <a href="ftp://ftp.gnu.org/gnu/aspell/dict/0index.html">aspell dictionaries</a> available.  First expand the files:</p>
+<pre>unzip *.wl</pre>
+<p>Then merge into a single list, eliminating duplicates:</p>
+<pre>sort --unique --ignore-case *.wl &gt;list.txt</pre>
+<p>In additon, I want everything to be UTF-8:</p>
+<pre>iconv -f ISO8859-1 -t UTF-8 list.txt &gt;ulist.txt</pre>
+<p>Pretty simple.  The merged english word list has 137,883 words.</p>

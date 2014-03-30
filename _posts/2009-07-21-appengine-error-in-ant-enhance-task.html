@@ -1,0 +1,25 @@
+---
+author: fileformat
+comments: true
+date: 2009-07-21 00:42:41+00:00
+layout: post
+slug: appengine-error-in-ant-enhance-task
+title: AppEngine error in ant enhance task
+wordpress_id: 58
+tags:
+- appengine gae ant
+---
+
+<p>The current version of the Google AppEngine SDK (1.2.2) still has a bug if you are using ant and have any classes that use the datastore.</p>
+
+<p>The error looks like:</p>
+
+<pre>java.lang.RuntimeException: Unexpected exception
+...
+Caused by: java.lang.NoClassDefFoundError: com/google/appengine/api/users/User</pre>
+
+<p>The solution is to add the following lines to the <code>config/user/ant-macros.xml</code> at line 99:</p>
+<pre>&lt;fileset dir="${appengine.sdk}/lib/impl" includes="**/*.jar"&gt;
+&lt;fileset dir="${appengine.sdk}/lib/shared" includes="**/*.jar"&gt;
+</pre>
+<p>I am amazed that this is still in there.  My project is so simple and I copied it straight from the <code>new_project_template</code>.  I don't understand why everyone else doesn't get the same error.  Am I the only one using ant?</p>

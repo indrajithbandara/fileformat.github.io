@@ -1,0 +1,17 @@
+---
+author: fileformat
+comments: true
+date: 2010-02-20 13:46:42+00:00
+layout: post
+slug: migrating-from-google-appengine-to-linode
+title: Migrating from Google AppEngine to Linode
+wordpress_id: 37
+---
+
+<p>When Google AppEngine (GAE) first came out, I thought it would be a great way to host some side projects that I had on FileFormat.Info that were too small to be worth setting up a whole server for, but could really use their own domain name &amp; identity.</p>
+
+<p>Unfortunately, GAE has some pretty severe limitations in terms of the standard Java classes.  I use the iText library, and managed to get it to work in AppEngine, but the missing classes mean custom colors and fonts don't work.  Since the point of <a href="http://www.labelmakr.com/">LabelMakr</a> was to print nice looking labels, including colors and fonts, I never really used the GAE version.</p>
+
+<p>Finally I saw an <a href="http://journal.uggedal.com/vps-performance-comparison">article comparing VPS hosts</a> and decided to give Linode a try.  Well, it has worked out very well.  The signup process at Linode was trivial.  Ubuntu installation was a breeze and the server is setup exactly the way I want.  And the kicker is performance.  This is a graph from Google's Webmaster Tools, showing how long GoogleBot takes to download a page:</p>
+
+<p><img src="gae2linode.png" alt="Performance on Google AppEngine vs Linode"  /></p>
