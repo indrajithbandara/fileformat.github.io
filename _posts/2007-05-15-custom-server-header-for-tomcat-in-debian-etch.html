@@ -1,0 +1,29 @@
+---
+author: fileformat
+comments: true
+date: 2007-05-15 02:34:00+00:00
+layout: post
+slug: custom-server-header-for-tomcat-in-debian-etch
+title: Custom Server Header for Tomcat in Debian Etch
+wordpress_id: 16
+tags:
+- debian
+- etch
+- tomcat
+---
+
+<p>If you are using Tomcat to serve pages directly (i.e. not through Apache), it will send as server header of <code>ApacheCoyote/1.0</code> which I do not like.  To change this, go into the <code>/etc/tomcat5.5/server.xml</code> file and in the appropriate  tag, add an new attribute:</p>
+
+
+<pre>
+server="NCSA/1.0a6"
+</pre>
+
+
+<p>Or whatever name you would like it to send.  In the same spot, you can add the</p>
+
+
+<pre>URIEncoding=&quot;UTF-8&quot;</pre>
+
+
+<p>Which is necessary for full Unicode support.</p>

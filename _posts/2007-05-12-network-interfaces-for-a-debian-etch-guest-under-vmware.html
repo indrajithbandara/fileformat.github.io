@@ -1,0 +1,27 @@
+---
+author: fileformat
+comments: true
+date: 2007-05-12 02:38:00+00:00
+layout: post
+slug: network-interfaces-for-a-debian-etch-guest-under-vmware
+title: Network interfaces for a Debian Etch guest under VMWare
+wordpress_id: 15
+tags:
+- debian
+- etch
+- eth0
+- eth1
+- eth2
+- vmware
+---
+
+<p>I'm using Debian Etch as a guest OS under VMWare.  When you copy the VM (to another machine or another instance on the same machine), VMWare wants to give it a new UID (you should let it so you don't end up with duplicate machines).  A side effect is that you get a new ethernet MAC address.  In Debian Etch, a side effect of that is that it thinks you have a new network card but it doesn't forget about the old network card, so instead of the network interface being eth0, it is now eth1.  And the next time you copy the VM, it is eth2, and so on.</p>
+
+<p>It is really a pretty simple fix, once you know where to look.  The clue is that udev is what is remembering the old MAC address.  In my VMs, the addresses were in:</p>
+
+
+
+<pre> /etc/udev/rules.d/z25_persistent-net.rules</pre>
+
+
+<p>It is just a plain text file.  Delete the lines with the old MAC addresses and change the last one to be eth0.</p>

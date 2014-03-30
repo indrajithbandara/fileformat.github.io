@@ -1,0 +1,23 @@
+---
+author: fileformat
+comments: true
+date: 2007-04-07 15:26:00+00:00
+layout: post
+slug: tomcat-on-port-80
+title: Tomcat on port 80
+wordpress_id: 13
+tags:
+- debian
+- etch
+- iptables
+- port 80
+- port80
+- tomcat
+---
+
+<p>I tried using <code>rinetd</code> to run Tomcat on port 80 but then you do not know the original ip address.  Using <code>iptables</code> keeps the original IP address.  The magic incantation that worked for me is (each should be a single line):</p>
+<pre>
+iptables -t nat -A OUTPUT -d localhost -p tcp --dport 80 -j REDIRECT --to-ports 8080
+iptables -t nat -A OUTPUT -d <i>dotted.ip.address.here</i> -p tcp --dport 80 -j REDIRECT --to-ports 8080
+iptables -t nat -A PREROUTING -d <i>dotted.ip.address.here</i> -p tcp --dport 80 -j REDIRECT --to-ports 8080
+</pre>

@@ -1,0 +1,35 @@
+---
+author: fileformat
+comments: true
+date: 2009-11-04 00:37:58+00:00
+layout: post
+slug: fix-for-vmware-time-drift-problems
+title: Fix for VMWare time drift problems
+wordpress_id: 54
+tags:
+- vmware ntp clock time
+---
+
+<p>I have a VMWare image that does some processing and then upload the results to Amazon S3.  The upload has a crypto signature that includes a timestamp, and if the time of the machine is too far from reality, the upload fails.  The VMWare instance was drifting by more than 10 seconds per minute.</p>
+
+
+
+<p>Both the host and the guest are Debian 4.0 (Etch), and the host has multi-core with multiple CPUs.  </p>
+
+
+
+<p>Switch the guest to look at a different clock source: Edit <code>/boot/grub/menu.lst</code> and add <code>divider=10 clocksource=acpi_pm</code> to the line that starts with <code># kopt=</code>.</p>
+
+<p>Run <code>update-grub</code>.  This re-does the menu entries to have the new options.</p>
+
+<p>Set the guest to sync to the host's time using VMWare Tools' time sync. On the host edit the <code>_guest_.vmx</code> file and add/change <code>tools.syncTime = "TRUE"</code> and <code>tools.syncTime.period = 60</code>.</p>
+
+
+
+<p>Restart the VM.  <code>cat</code> the file <code>/sys/devices/system/clocksource/clocksource0/current_clocksource</code> to make sure it is in fact using `acpi_pm</code>.</p>
+
+<p>Side note: it may be better to use NTP to sync the time, but only if you add <code>tinker panic 0</code> to the top of <code>/etc/ntp.conf</code>.  I didn't find this until after I had the VMWare host time sync working, so I have not tried it.</p>
+
+
+
+<p>References: <a href="http://kb.vmware.com/selfservice/microsites/search.do?language=en_US&amp;cmd=displayKC&amp;externalId=1006427">VMWare KB article on Linux settings</a>, <a href="http://www.vmware.com/pdf/vmware_timekeeping.pdf">VMWare KB article on timekeeping</a></p>

@@ -1,0 +1,22 @@
+---
+author: fileformat
+comments: true
+date: 2009-07-12 00:31:45+00:00
+layout: post
+slug: php-for-html-files
+title: PHP for .html files
+wordpress_id: 46
+tags:
+- apache php
+---
+
+<p>Add the follow line to the <code>.htaccess</code> file:</p>
+
+
+
+<pre>
+AddType application/x-httpd-php5 .html
+</pre>
+
+
+<p>This lets you can still have nice URLs that end with <code>.html</code>, but run then through the PHP processor for includes and such like.</p>

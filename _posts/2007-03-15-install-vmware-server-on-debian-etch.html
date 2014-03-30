@@ -1,0 +1,31 @@
+---
+author: fileformat
+comments: true
+date: 2007-03-15 03:25:00+00:00
+layout: post
+slug: install-vmware-server-on-debian-etch
+title: Install VMWare server on Debian Etch
+wordpress_id: 9
+tags:
+- debian
+- etch
+- vmware
+---
+
+<p>These are just my notes for installing VMWare server since I need to do it on a bunch of machines.</p>
+
+<p>Load the prerequisites for VMWare server's <code>vmware-install.pl</code> script (it should be a single line):</p>
+
+<pre>apt-get install libx11-6 libx11-dev libxtst6 xinetd wget linux-headers-`uname -r` build-essential gcc binutils-doc make manpages-dev autoconf automake1.9 libtool flex bison gdb libc6-dev-amd64 lib64gcc1 gcc-2.95-doc</pre>
+
+<p>Extract the downloaded file:</p>
+<pre>tar -xvzf /root/VMware-server-1.0.2-39867.tar.gz</pre>
+
+<p>Get some serial numbers by filling out the form at <a href="http://register.vmware.com/content/registration.html">http://register.vmware.com/content/registration.html</a></p>
+
+<p>Run <code>vmware-install.pl</code> with the defaults for everything except NAT networking which should be <code>no</code>.
+
+<p>Add the following to <code>/usr/bin/vmware</code> (on the first blank line):</p>
+<pre>export VMWARE_USE_SHIPPED_GTK=yes</pre>
+
+<p>The VMWare icon is under Applications/System Tools.</p>

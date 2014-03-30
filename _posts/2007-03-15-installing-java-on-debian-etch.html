@@ -1,0 +1,23 @@
+---
+author: fileformat
+comments: true
+date: 2007-03-15 02:58:00+00:00
+layout: post
+slug: installing-java-on-debian-etch
+title: Installing Java on Debian Etch
+wordpress_id: 6
+tags:
+- debian
+- etch
+- java
+---
+
+<p>Add/edit the following lines in /etc/apt/sources.list:</p>
+
+
+<pre>
+deb http://ftp.debian.org/debian/ etch main contrib non-free
+deb-src http://ftp.debian.org/debian/ etch main contrib non-free
+</pre>
+
+<p>Then run <code>apt-get update</code>.  Now install java with <code>apt-get install sun-java5-jdk</code> (or <code>sun-java6-jdk</code>)</p>

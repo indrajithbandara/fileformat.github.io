@@ -1,0 +1,21 @@
+---
+author: fileformat
+comments: true
+date: 2007-05-15 02:53:00+00:00
+layout: post
+slug: custom-java-parameters-for-tomcat-on-debian-etch
+title: Custom java parameters for Tomcat on Debian Etch
+wordpress_id: 17
+tags:
+- debian
+- etch
+- tomcat
+---
+
+<p>The correct place for custom java parameters on Debian Etch is in <code>/etc/default/tomcat5.5</code>: look for the line:</p>
+
+
+<pre>CATALINA_OPTS=&quot;-Djava.awt.headless=true -Xmx128M -server&quot;</pre>
+
+
+<p>I usually bump up <code>-Xmx</code> (my server is just for Tomcat) and add <code>-Xss2m</code>.</p>

@@ -1,0 +1,21 @@
+---
+author: fileformat
+comments: true
+date: 2009-09-25 00:35:30+00:00
+layout: post
+slug: cursor-keys-for-vmware-server-2-0
+title: Cursor keys for VMWare Server 2.0
+wordpress_id: 51
+---
+
+<p>I upgraded to VMWare Server 2.0. It has a web-based admin console, which is nice, but isn't as reliable or peppy as the old fat client. The viewer is a browser plug-in, which is okay, but the cursor keys (and page-up, page-down, etc.) do not work (though the ones on the number pad do).</p>
+
+
+
+<p>Anyhow, I found the solution! Edit (or create) <code>~/.vmware/config</code> and add the line</p>
+
+<pre>xkeymap.nokeycodeMap=&quot;TRUE&quot;</pre>
+
+
+
+

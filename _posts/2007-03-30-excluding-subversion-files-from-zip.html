@@ -1,0 +1,20 @@
+---
+author: fileformat
+comments: true
+date: 2007-03-30 13:23:00+00:00
+layout: post
+slug: excluding-subversion-files-from-zip
+title: Excluding subversion files from ZIP
+wordpress_id: 12
+tags:
+- subversion
+- svn
+- zip
+---
+
+<p>Zip wildcards will include various <code>.svn</code> files.  This command will exclude them:</p>
+
+
+<pre>
+find | grep -v .*\.svn.* | zip <i>zipfile</i>.zip -@
+</pre>
