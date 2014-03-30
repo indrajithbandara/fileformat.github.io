@@ -1,0 +1,20 @@
+---
+layout: default
+title : All Posts
+noindex: true
+---
+
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>Date</th>
+			<th>Title</th>
+		</tr>
+	</thead>
+	<tbody>
+{% for page in site.posts %}{% if page.noindex %}{% else %}		<tr>
+			<td>{{page.date | date: "%Y-%m-%d" }}</td>
+			<td><a href="{{ page.url }}">{{page.title}}</a></td>
+		</tr>
+{% endif %}{% endfor %}</tbody>
+</table>
