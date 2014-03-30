@@ -1,0 +1,22 @@
+---
+author: fileformat
+comments: true
+date: 2012-03-04 03:28:56+00:00
+layout: post
+slug: posting-with-curl
+title: POSTing with Curl
+wordpress_id: 99
+tags:
+- curl
+- POST
+- http
+---
+
+<p>Just so I don't have to keep looking at the documentation, here's how to do a POST request with curl:</p>
+<pre>
+curl -v -X POST --data "<i>urlencoded-data</i>" <i>url</i>
+</pre>
+<p>For example:</p>
+<pre>
+curl -v -X POST --data "first=Joe&amp;last=Smith" http://example.com/form.html`
+</pre>

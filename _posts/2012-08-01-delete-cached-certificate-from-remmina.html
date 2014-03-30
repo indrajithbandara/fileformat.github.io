@@ -1,0 +1,28 @@
+---
+author: fileformat
+comments: true
+date: 2012-08-01 21:00:58+00:00
+layout: post
+slug: delete-cached-certificate-from-remmina
+title: Delete cached certificate from Remmina
+wordpress_id: 118
+tags:
+- Remmina
+- TerminalServer
+- freerdp
+- RDP
+---
+
+<p>I recently had trouble using Remmina to connect to one of my Windows servers.  When I connected directly, I discovered this in the System EventLog:</p>
+
+
+<blockquote>
+Information    8/1/2012 1:00:40 AM    TerminalServices-RemoteConnectionManager    1056    None<br/>
+<br/>
+A new self signed certificate to be used for Terminal Server authentication on SSL connections was generated. The name on this certificate is walleye. The SHA1 hash of the certificate is in the event data.
+</blockquote>
+
+
+<p>But I could not see anywhere in Remmina GUI to manage the cached certificates.  A little digging turned up the location of the cache: <code>~/.freerdp/known_hosts</code> which is a straightforward text file that can be edited manually.
+
+<p><a href="https://bugs.launchpad.net/ubuntu/+source/remmina/+bug/683249/comments/5">hat tip</a></p>

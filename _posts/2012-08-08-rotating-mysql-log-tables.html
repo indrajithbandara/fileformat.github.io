@@ -1,0 +1,23 @@
+---
+author: fileformat
+comments: true
+date: 2012-08-08 19:15:51+00:00
+layout: post
+slug: rotating-mysql-log-tables
+title: Rotating MySQL log tables
+wordpress_id: 114
+tags:
+- mysql
+---
+
+<p>I use MySQL for logging.  Here is a way to rollover a table named <code>BigTable</code> without downtime.</p>
+
+
+
+<pre>
+CREATE TABLE BigTableNew LIKE BigTable;
+RENAME TABLE BigTable TO BigTable_<i>Date</i>, BigTableNew TO BigTable;
+</pre>
+
+
+

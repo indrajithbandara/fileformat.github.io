@@ -1,0 +1,29 @@
+---
+author: fileformat
+comments: true
+date: 2010-07-21 21:44:29+00:00
+layout: post
+slug: parameters-for-tcpdump
+title: Parameters for tcpdump
+wordpress_id: 83
+tags:
+- tcpdump
+- WireShark
+- TCP
+---
+
+<p>I recently needed to run tcpdump and these are my notes on getting it to work correctly.</p>
+
+<p>Parameters:</p>
+
+<ul>
+  <li><code>-s 0</code> (capture the complete packet)</li>
+  <li><code>-n</code> (don't try to convert numeric ip/port)</li>
+  <li><code>-w <i>filename</i>.pcap</code> (save to file)</li>
+  <li><code>port <i>nnnn</i></code> (capture anything going to or from port <i>nnnn</i>)</li>
+</ul>
+
+<p>Use Control-C to stop the capture (it closes the file gracefully).</p>
+
+<p>Use WireShark to open the <code>.pcap</code> file.</p>
+

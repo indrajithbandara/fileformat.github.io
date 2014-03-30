@@ -1,0 +1,45 @@
+---
+author: fileformat
+comments: true
+date: 2010-10-17 16:12:58+00:00
+layout: post
+slug: how-to-convert-opentype-otf-to-truetype-ttf
+title: How to convert an OpenType font (.otf) to TrueType (.ttf)
+wordpress_id: 72
+tags:
+- ttf
+- otf
+- TrueType
+- OpenType
+- FontForge
+- fonts
+---
+
+<p>I wanted to show the new STIX fonts on FileFormat.Info, but they are only available in a flavor of OpenType that doesn't load in Java.  This is how to convert them to TrueType.  It may lose some of the more advanced typographic features, but I am only showing a single character at a time, so it does not really matter for my purposes.</p>
+
+<p>tl;dr version: use FontForge.  Open the .otf file and then File->Generate, and select TrueType</p>
+
+<p>Automated/scripted version:</p>
+
+<p>Install the required software:</p>
+
+<pre>
+sudo apt-get install fontforge python-fontforge
+</pre>
+
+
+<p>Create a tiny python file:</p>
+
+
+<pre>
+#!/usr/bin/python
+import fontforge
+font = fontforge.open("STIXGeneral.otf")
+font.generate("STIXGeneral.ttf")
+</pre>
+
+
+<p>Pretty simple.  I wrote a <a href="http://fonts.fileformat.info/bin/otf2ttf.py">otf2ttf.py</a> script for converting a directory full of fonts all at once.</p>
+
+
+

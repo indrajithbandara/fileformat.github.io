@@ -1,0 +1,28 @@
+---
+author: fileformat
+comments: true
+date: 2014-01-09 12:35:29+00:00
+layout: post
+slug: virtualbox-ie11-image-from-modern-ie-on-ubuntu-13-04-raring
+title: VirtualBox IE11 image from modern.ie on Ubuntu 13.04 (raring)
+wordpress_id: 142
+tags:
+- ubuntu
+- virtualbox
+- ie11
+- modern.ie
+---
+<p>I needed to test IE11 on Windows 8.1 on my Ubuntu 13.04 (raring) workstation.  Microsoft graciously provides VirtualBox images at <a href="http://modern.ie/">modern.ie</a>, but I was getting the error:</p>
+
+<blockquote>Failed to import appliance VirtualBox VMs/import/IE11 - Win8.1.ovf.</blockquote>
+
+<p>when I tried to import it.  I could not find more detailed messages about why it wouldn't import, but I was able to poke around enough to get it to run.  Here is my workaround:</p>
+
+<ul>
+<li>Extract the ova.  This file is in the <code>.tar</code> file format,  with an <code>.ovf</code> and a <code>.vmdk</code> file inside:
+<pre>tar -xvf IE11\ -\ Win8.1.ova</pre></li>
+<li>Create a new virtual machine in VirtualBox, type=Microsoft Windows, version=Windows 8 (64-bit).  Do NOT add a virtual hard drive. </li>
+<li>Once it is created but before you start it, go into the Settings -&gt; Storage -&gt; Controller: SATA and attach the <code>.vmdk</code> file from step 1.</li>
+</ul>
+
+<p>Voilà! A working virtual machine with IE11 on Windows 8.1.  Obviously there is something wrong in the <code>.ovf</code> file, but this is simple enough that it isn't worth trying to figure out what it is.</p>

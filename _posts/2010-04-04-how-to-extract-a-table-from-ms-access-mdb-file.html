@@ -1,0 +1,27 @@
+---
+author: fileformat
+comments: true
+date: 2010-04-04 20:47:40+00:00
+layout: post
+slug: how-to-extract-a-table-from-ms-access-mdb-file
+title: How to extract a table from a Microsoft Access .mdb file
+wordpress_id: 66
+tags:
+- csv
+- mdb
+- msaccess
+- msoffice
+- NANP
+- areacodes
+---
+
+<p>I recently needed to get a list of area codes mapped to states in csv format.  The <a href="http://www.nanpa.com/area_codes/">NANPA</a> has the data (for free), but only as a Microsoft Access .mdb.  Here's how to extract the data using <code>mdb-tools</code>.</p>
+<p>First, figure out the table name from a dump of the schema:</p>
+<pre>
+mdb-schema _database_.mdb
+</pre>
+<p>Then export it:</p>
+<pre>
+mdb-export <i>database</i>.mdb <i>tablename</i>
+</pre>
+<p>The NANPA table has spaces in the name, so you have to put double-quotes around it.</p>
