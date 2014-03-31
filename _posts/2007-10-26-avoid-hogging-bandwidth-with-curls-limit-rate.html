@@ -1,0 +1,18 @@
+---
+author: fileformat
+comments: true
+date: 2007-10-26 19:21:52+00:00
+layout: post
+slug: avoid-hogging-bandwidth-with-curls-limit-rate
+title: Avoid hogging bandwidth with curl's --limit-rate
+wordpress_id: 28
+tags:
+- curl
+- download
+---
+
+<p>At work we have a slower (1.1 Mbps) internet connection and I don't want to hog it when I need to download a big file.  Fortunately, curl has a --limit-rate option.  For example (should be one line):</p>
+
+<pre>
+curl --verbose --output <i>bigfile.tar.gz</i> --limit-rate 3000 <i>http://download.example.com/bigfile.tar.gz</i>
+</pre>

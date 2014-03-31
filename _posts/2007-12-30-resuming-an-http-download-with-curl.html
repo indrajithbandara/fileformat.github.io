@@ -1,0 +1,17 @@
+---
+author: fileformat
+comments: true
+date: 2007-12-30 17:53:18+00:00
+layout: post
+slug: resuming-an-http-download-with-curl
+title: Resuming an HTTP download with Curl
+wordpress_id: 32
+tags:
+- curl
+- download
+---
+
+<p>I had to download an ISO image to test some new firewall software and it got interrupted halfway through.  Fortunately, curl has a way to continue from where you left out with the <code>-C -</code> option.  A full command line looks like:</p>
+<pre>
+curl -C - --compressed --output disk.iso http://example/download/disk.iso
+</pre>

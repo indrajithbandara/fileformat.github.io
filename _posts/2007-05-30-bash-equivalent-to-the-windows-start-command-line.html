@@ -1,0 +1,40 @@
+---
+author: fileformat
+comments: true
+date: 2007-05-30 17:02:00+00:00
+layout: post
+slug: bash-equivalent-to-the-windows-start-command-line
+title: bash equivalent to the Windows "start" command line
+wordpress_id: 19
+tags:
+- bash
+- debian
+- linux
+- start
+- xdg-open
+---
+
+<p>One of the things that I missed when I moved from Windows to Linux was the <code>start</code> command, which would launch the correct program for a given file.  Well, add the following line to <code>~/.bashrc</code> to get it:</p>
+
+<pre>
+alias start=xdg-open
+</pre>
+
+
+<p>Then either logout/login, or run (the leading dot &amp; space  are important):</p>
+
+
+<pre>
+. ~/.bashrc
+</pre>
+
+
+<p>Now you can launch the appropriate file by doing</p>
+
+
+<pre>
+start artwork.png
+</pre>
+
+
+

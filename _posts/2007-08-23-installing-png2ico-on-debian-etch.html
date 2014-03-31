@@ -1,0 +1,27 @@
+---
+author: fileformat
+comments: true
+date: 2007-08-23 02:24:04+00:00
+layout: post
+slug: installing-png2ico-on-debian-etch
+title: Installing png2ico on Debian Etch
+wordpress_id: 22
+tags:
+- favicon
+- ico
+- png
+- png2ico
+---
+
+<p>It is pretty simple: these are just my notes so I don't have to think next time I do it.</p>
+
+<p>Download from <a href="http://www.winterdrache.de/freeware/png2ico/">http://www.winterdrache.de/freeware/png2ico/</a></p>
+
+<pre>
+chdir /usr/local
+tar -xvzf png2ico-src-YYYY-MM-DD.tar.gz
+apt-get install libpng12-src
+make
+</pre>
+
+<p>My <a href="http://www.fileformat.info/convert/image/png2ico.htm">Online Png To Icon converter</a> is just a wrapper around this.</p>

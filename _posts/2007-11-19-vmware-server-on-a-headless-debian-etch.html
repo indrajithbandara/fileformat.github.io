@@ -1,0 +1,22 @@
+---
+author: fileformat
+comments: true
+date: 2007-11-19 19:20:20+00:00
+layout: post
+slug: vmware-server-on-a-headless-debian-etch
+title: VMWare Server on a headless Debian Etch
+wordpress_id: 29
+tags:
+- debian
+- etch
+- vmware
+---
+
+<p>I recently had to install VMWare Server on a server that didn't have the GUI bits installed.  This is the list of additional packages that need to be installed for VMWare to install:</p>
+
+
+<pre>
+apt-get install psmisc libxrender1 libxt6
+</pre>
+
+<p>Then it will install, and the VMs can have GUI even though the host doesn't!</p>
