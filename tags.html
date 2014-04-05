@@ -3,21 +3,24 @@ layout: default
 title : All Tags
 noindex: true
 ---
+{% capture all_tags %}{% for tag in site.tags %}{{tag[0]}}|{% endfor %}{% endcapture %}
+{% assign tag_array = all_tags | split:"|" | sort %}
 <p>Count: {{ site.tags.size }}</p>
-{% assign sortedTags = site.tags %}
 <div class="panel-group" id="accordion">
-{% for tag in sortedTags %}
+{% for targetTag in tag_array %}
+{% for tag in site.tags | sort: 0 %}
+	{% if tag[0] == targetTag %}
 	{% assign tagPages = tag | last %}
 	<div class="panel panel-default">
 		<div class="panel-heading">
 			<h4 class="panel-title">
-				<a data-toggle="collapse" data-parent="#accordion" href="#collapse{{ tag | first | slugize }}">
-				{{ tag | first | slugize }}
-				{{ tagPages.size }}
+				<a data-toggle="collapse" data-parent="#accordion" href="#collapse{{ forloop.index0  }}">
+				{{ tag[0] }}
+				<span class="badge pull-right">{{ tagPages.size }}</span>
 				</a>
 			</h4>
 		</div>
-			<table id="collapse{{ tag | first | slugize }}" class="panel-collapse collapse table table-striped">
+			<table id="collapse{{ forloop.index0  }}" class="panel-collapse collapse table table-striped">
 				<tbody>
 			{% for thePage in tagPages %}{% if thePage.noindex %}{% else %}		<tr>
 						<td>{{thePage.date | date: "%Y-%m-%d" }}</td>
@@ -26,5 +29,7 @@ noindex: true
 			{% endif %}{% endfor %}</tbody>
 			</table>
 	</div>
+	{% endif %}
+{% endfor %}
 {% endfor %}
 </div>
