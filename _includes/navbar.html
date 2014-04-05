@@ -1,3 +1,12 @@
+<div class="container-fluid hidden-phone" style="
+    background-color: #EFEFEF;
+    margin: 0;
+    padding-bottom: 15px;
+    padding-left: 40px;
+    padding-top: 15px;
+">
+	<a href="http://www.fileformat.info/index.htm"><img src="http://www.fileformat.info/images/header/logo_wide.png" /></a>
+</div>
 <nav class="navbar navbar-default" role="navigation">
 	<div class="container">
 		<div class="navbar-header">
@@ -10,15 +19,18 @@
 		</div>
 		<div class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
-				<li><a href="/">Home</a></li>
-				<li><a href="http://www.fileformat.info/">www.FileFormat.Info</a></li>
-				<li><a href="/posts.html">All Posts</a></li>
+				<li><a href="/index.html">Home</a></li>
+				<li><a href="/posts.html">Posts</a></li>
+				<!--<li><a href="/tags.html">Tags</a></li>-->
+				<li><a href="http://www.fileformat.info/">www</a></li>
 			</ul>
 			<form action="/search.html" class="navbar-form navbar-right" method="get">
-				<div class="form-group">
+				<div class="input-group">
 					<input type="text" name="q" placeholder="Search" class="form-control">
+					<span class="input-group-btn">
+						<button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
+					</span>
 				</div>
-				<button type="submit" class="btn btn-primary">Search</button>
 			</form>
 		</div><!--/.navbar-collapse -->
 	</div>
