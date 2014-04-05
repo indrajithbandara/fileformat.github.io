@@ -8,3 +8,4 @@ production_url: http://blog.fileformat.info
 title : FileFormat.Info Blog
 gems:
   - jekyll-redirect-from
+markdown: kramdown
