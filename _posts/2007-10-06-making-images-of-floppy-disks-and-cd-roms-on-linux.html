@@ -1,0 +1,40 @@
+---
+author: fileformat
+comments: true
+date: 2007-10-06 22:23:57+00:00
+layout: post
+slug: making-images-of-floppy-disks-and-cd-roms-on-linux
+title: Making images of floppy disks and CD-ROMs on Linux
+wordpress_id: 26
+tags:
+- cdrom
+- dd
+- debian
+- floppy
+- img
+- iso
+- linux
+- rawread
+---
+
+<p>I have several books that came with floppy disks or CD-ROMs.  I'm worried about whether they'll last and wanted to make copies of them.  It is trivially easy on Linux:</p>
+
+
+<pre>
+dd if=/dev/scd0 of=/iso/book.iso
+</pre>
+
+
+<p>I got a <a href="http://www.troubleshooters.com/linux/coasterless.htm">rawread script</a> that supposedly solves some compatibility problems.  I found that <code>dd</code> worked fine on two disks that the script had problems with.  The script is called with</p>
+
+<pre>
+rawread.sh /dev/scd0 >book.iso
+</pre>
+
+<p>To mount a image (<code>mkdir /media/iso</code> directory first):</p>
+
+<pre>
+sudo mount -o loop book.iso /media/iso
+</pre>
+
+<p>For floppies, use  <code>/dev/usb0</code> (I have a usb floppy drive) and <code>.img</code> as the extension.</p>

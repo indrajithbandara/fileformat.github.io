@@ -1,0 +1,32 @@
+---
+author: fileformat
+comments: true
+date: 2007-06-03 01:58:00+00:00
+layout: post
+slug: jcharset-with-tomcat-55
+title: JCharset with Tomcat 5.5
+wordpress_id: 20
+tags:
+- charset
+- java
+- jcharset
+- tomcat
+---
+
+<p>I use <a href="http://www.freeutils.net/source/jcharset/">JCharset</a> to get some additional <a href="http://www.fileformat.info/info/charset/index.htm">character sets</a>, including
+<a href="http://www.fileformat.info/info/charset/UTF-7/index.htm">UTF 7</a> and <a href="http://www.fileformat.info/info/charset/GSM-DEFAULT-ALPHABET/index.htm">GSM DEFAULT</a>.
+While it was trivial to setup in development (where I launch Tomcat from an ant task with all sorts of parameters), it was a different story in production where I'm using the default Debian Etch install of Tomcat 5.5.  It was very picky about where the JCharset.jar file went: it didn't like in:</p>
+
+<ul>
+<li><code>WEB-INF/lib</code></li>
+<li><code>jre/lib</code> (which has Sun's charset.jar)</li>
+<li><code>/var/lib/tomcat5.5/shared/lib</code></li>
+</ul>
+
+<p>It has to go in:</p>
+
+<ul>
+<li><code>/usr/share/tomcat5.5/endorsed</code></li>
+</ul>
+
+<p>No errors or anything came up: it just didn't load.  I didn't notice until I saw 404's on the missing pages.</p>

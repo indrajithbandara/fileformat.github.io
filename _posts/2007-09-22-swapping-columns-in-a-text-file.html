@@ -1,0 +1,24 @@
+---
+author: fileformat
+comments: true
+date: 2007-09-22 11:58:23+00:00
+layout: post
+slug: swapping-columns-in-a-text-file
+title: Swapping columns in a text file
+wordpress_id: 25
+tags:
+- awk
+- text processing
+---
+
+<p>An awk snippet to swap columns in a text file:</p>
+
+
+<pre>
+awk -F'[ ]' '{ print $2, ": ", $1 }' original.txt >swapped.txt
+</pre>
+
+
+<p>The <code>'[ ]'</code> is the separator in the original file (a regular expression).  The <code>": "</code> is the separator that is put in the result file.</p>
+
+<p>You can also be done with <code>cut</code> and <code>paste</code> command line tools.</p>

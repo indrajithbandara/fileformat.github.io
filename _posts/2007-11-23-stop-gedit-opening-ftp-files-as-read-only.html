@@ -1,0 +1,26 @@
+---
+author: fileformat
+comments: true
+date: 2007-11-23 00:47:01+00:00
+layout: post
+slug: stop-gedit-opening-ftp-files-as-read-only
+title: Stop GEdit opening FTP files as read-only
+wordpress_id: 30
+tags:
+- debian
+- etch
+- ftp
+- gedit
+---
+
+<p>I use Debian's &quot;Places -> connect to server...&quot; dialog to setup connections to several FTP servers.  Copying and such like work fine, but when I try to use GEdit, it always opens the file read-only.  I can &quot;Save As&quot; to the exact file, so it wasn't a permission problem.  The trick is in some totally obscure config file.  Here's the (in GUI) steps to fix it:
+
+
+<ol>
+	<li>Run gconf-editor</li>
+	<li>Open the tree to /apps/gedit-2/preferences/editor/save</li>
+	<li>Edit writable_vfs_schemes</li>
+	<li>Add <code>ftp</code> to the list</li>
+</ol>
+
+<p>Voila. Gedit saving FTP. Via the <a href="http://ubuntuforums.org/showthread.php?t=298217">kaylus on the Ubuntu Forums</a>, but it is the same in Debian Etch.</p>
