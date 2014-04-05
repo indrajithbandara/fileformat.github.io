@@ -21,7 +21,7 @@ redirect_from:
 			{% for page in site.posts %}{% if page.noindex %}{% else %}{% unless forloop.index > 5 %}
 				<p>{{page.date | date: "%Y-%m-%d" }} - <a href="{{ page.url }}">{{page.title}}</a></p>
 			{%endunless%}{% endif %}{% endfor %}
-				<a class="btn btn-default btn-xs" href="/support/archive.html">More...</a>
+				<a class="btn btn-default btn-xs" href="/posts.html">More...</a>
 			</div>
 		</div>
 		<div class="panel panel-default">
