@@ -1,0 +1,19 @@
+---
+author: fileformat
+comments: true
+date: 2009-02-17
+layout: post
+slug: awk-command-for-line-numbers
+title: awk command for line numbers
+tags:
+- awk
+- csv
+---
+<p>The import formats for <a href="http://www.numberplanet.com/">NumberPlanet</a> include a <code>position</code>, which doesn't always exist. To get around this, here's an awk one-liner to add the line number as the postion field:</p>
+<pre>
+awk '{print $0NR}' infile.csv &gt;outfile.csv
+</pre>
+<p>If you need to add a comma as well:</p>
+<pre>
+awk '{print $0","NR}' infile.csv &gt;outfile.csv
+</pre>

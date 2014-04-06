@@ -1,0 +1,28 @@
+---
+author: fileformat
+comments: true
+date: 2008-07-05
+layout: post
+slug: appengine-memcached-key-length-limit
+title: AppEngine memcached key length limit
+tags:
+- appengine
+- memcached
+---
+<p>I guess this isn't news to people that are already using memcached, but it was news to me (and undocumented in the AppEngine docs) that the keys for memcached are limited to 250 characters.</p>
+
+<p>I'm caching complete pages, and since number handles can be as big as a string, the keys get big too.  I put in a hack to use the MD5 hash of the URL as the key if it would be a problem.  In theory hash collisions could be a problem, but I don't see that being an issue in reality.</p>
+
+<p>The error message looks like:</p>
+<pre>
+Traceback (most recent call last):
+  File "/path/to/google_appengine/google/appengine/ext/webapp/__init__.py", line 499, in __call__
+    handler.get(*groups)
+  File "/path/to/np/ffnp/number.py", line 161, in get
+    cached = memcache.get(cachekey)
+  File "/path/to/google_appengine/google/appengine/api/memcache/__init__.py", line 358, in get
+    request.add_key(_key_string(key))
+  File "/path/to/google_appengine/google/appengine/api/memcache/__init__.py", line 109, in _key_string
+    'received %d bytes' % (MAX_KEY_SIZE, len(server_key)))
+ValueError: Keys may not be more than 250 bytes in length, received 425 bytes
+</pre>

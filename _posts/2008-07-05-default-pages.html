@@ -1,0 +1,22 @@
+---
+author: fileformat
+comments: true
+date: 2008-07-05
+layout: post
+slug: default-pages
+title: Default Pages
+tags:
+- appengine
+---
+<p>I like to end my URLs with a file name (just my personal preference).  For SEO, I want to make sure that the default page (<code>index.html</code> in my case) for a directory is indexed only once, so I wrote a little RedirectIndex stub that I had mapped to the various possible directories.</p>
+
+<p>Internally, I always use the page name, so I figured that was good enough.  However, GoogleBot seems to guess that <code>index.html</code> is the default page, and I caught it trying to access a page with a query string without the file name.  In other words, it tried to hit <code>/tag/square/?page=2</code> instead of <code>/tag/square/index.html?page=3</code>.</p>
+
+<p>Changing the mappings from <code>/</code> to <code>/(?:[?].*)?</code> solved it.  It seems like something in the webapp needs the group to be non-capturing.  Otherwise you get </p>
+
+<pre>
+Traceback (most recent call last):
+  File "/path/to/google_appengine/google/appengine/ext/webapp/__init__.py", line 499, in __call__
+    handler.get(*groups)
+TypeError: get() takes exactly 1 argument (2 given)
+</pre>
