@@ -1,0 +1,33 @@
+---
+author: fileformat
+comments: true
+date: 2014-02-08
+layout: post
+slug: vector-graphics-in-ms-word
+title: Vector graphics in Microsoft Word
+tags:
+- MSWord
+- Microsoft Word
+- wmf
+- svg
+- vector graphics
+---
+<p>I needed to put a logo in a Microsoft Word document and have it look good:</p>
+<ul>
+	<li>On screen</li>
+	<li>In print</li>
+	<li>On screen in a generated PDF</li>
+	<li>In print from a generated PDF</li>
+</ul>
+
+<p>This proved to be surprising difficult: MSWord doesn't support any standard format, including Microsoft's own <code>VML</code>.  The only one that
+I could get to work was <code>WMF</code> and even that took some doing.  I tried <code>EMF</code>, which is supposed to be a more compatible version, and that didn't work either.</p>
+
+<p>Here are the steps I used:</p>
+
+<ol>
+	<li>Start with an <code>SVG</code></li>
+	<li>Open in InkScape and clear the margins, fit page to image size</li>
+	<li>While InkScape can save to <code>WMF</code>, the colors aren't correct, so just resave the <code>SVG</code></li>
+	<li>Open in LibreOffice Draw.  Export to WMF</li>
+</ol>
