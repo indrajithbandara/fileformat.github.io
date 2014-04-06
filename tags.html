@@ -3,13 +3,14 @@ layout: default
 title : All Tags
 noindex: true
 ---
-{% capture all_tags %}{% for tag in site.tags %}{{tag[0]}}|{% endfor %}{% endcapture %}
+{% capture all_tags %}{% for tag in site.tags %}{{tag[0] | downcase}}|{% endfor %}{% endcapture %}
 {% assign tag_array = all_tags | split:"|" | sort %}
 <p>Count: {{ site.tags.size }}</p>
 <div class="panel-group" id="accordion">
 {% for targetTag in tag_array %}
 {% for tag in site.tags | sort: 0 %}
-	{% if tag[0] == targetTag %}
+	{% assign tagLower = tag[0] | downcase %}
+	{% if tagLower == targetTag %}
 	{% assign tagPages = tag | last %}
 	<div class="panel panel-default">
 		<div class="panel-heading">

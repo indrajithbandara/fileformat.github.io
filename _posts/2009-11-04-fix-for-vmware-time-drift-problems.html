@@ -7,7 +7,9 @@ slug: fix-for-vmware-time-drift-problems
 title: Fix for VMWare time drift problems
 wordpress_id: 54
 tags:
-- vmware ntp clock time
+- vmware
+- ntp
+- time
 ---
 
 <p>I have a VMWare image that does some processing and then upload the results to Amazon S3.  The upload has a crypto signature that includes a timestamp, and if the time of the machine is too far from reality, the upload fails.  The VMWare instance was drifting by more than 10 seconds per minute.</p>
