@@ -32,3 +32,9 @@ Step by step:
 JAVA_OPTIONS=-Djava.util.logging.config.file=/usr/share/jetty/webapps/root/WEB-INF/logging.properties</pre>
 </li>
 </ol>
+
+<h2>Update (2014-09-16)</h2>
+<p>The above did not work with Jetty9 on Ubuntu 14.04 (Trusty Tahir).  Instead add the following to <code>/etc/default/jetty9</code>:</p>
+<pre>
+  JAVA_OPTIONS="$JAVA_OPTIONS -Dorg.apache.commons.logging.simplelog.defaultlog=warn"
+</pre>
