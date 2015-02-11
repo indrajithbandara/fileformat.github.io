@@ -20,14 +20,14 @@ tags:
 having to use the <code><i>gibberish</i>.cloundfront.net</code>.  Setup via the CloudFront console is easy: just pick the appropriate key
 from the list of keys you have uploaded to AWS IAM.</p>
 
-<p>However, the IAM console has way to upload the key.  You have to use the AWS CLI.  Not hard, just a lot of parameters.</p>
+<p>However, the IAM web console has no way to upload the key.  You have to use the AWS CLI.  Not hard, just a lot of parameters.</p>
 
 <h2>Problem</h2>
 
 <p>The command line blows up with a cryptic error:</p>
 
 <blockquote>
-A client error (EntityAlreadyExists) occurred when calling the UploadServerCertificate operation: The Server Certificate with name ads.bluegolf.com already exists.
+A client error (EntityAlreadyExists) occurred when calling the UploadServerCertificate operation: The Server Certificate with name test.example.com already exists.
 </blockquote>
 
 <h2>Solution</h2>
