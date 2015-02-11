@@ -42,9 +42,7 @@ A client error (EntityAlreadyExists) occurred when calling the UploadServerCerti
 
 <p>Generate a key and certificate request.</p>
 
-<blockquote>
-openssl req -newkey rsa:2048 -nodes -sha256 -keyout <i>example</i>.key -out <i>example</i>.csr
-</blockquote>
+<pre>openssl req -newkey rsa:2048 -nodes -sha256 -keyout <i>example</i>.key -out <i>example</i>.csr</pre>
 
 <p>You should now have two files: <code><i>example</i>.key</code> and <code><i>example</i>.csr</code>.</p>
 
@@ -52,23 +50,17 @@ openssl req -newkey rsa:2048 -nodes -sha256 -keyout <i>example</i>.key -out <i>e
 
 <p>Transform the result to a format acceptable to AWS:</p>
 
-<blockquote>
-openssl rsa -in <i>example</i>.key -text > <i>example</i>.aws
-</blockquote>
+<pre>openssl rsa -in <i>example</i>.key -text &gt; <i>example</i>.aws</pre>
 
 <p>Strip out everything from the <i>example</i>.aws except the RSA key.</p>
 
 <p>Make the certificate chain.  Download the appropriate intermediate and root certificates and merge them (just with each other, <i>not</i> with your new cert):</p>
 
-<blockquote>
-cat sub.class1.server.ca.pem ca.pem &gt;chain.crt
-</blockquote>
+<pre>cat sub.class1.server.ca.pem ca.pem &gt;chain.crt</pre>
 
 <p>Upload to AWS IAM</p>
 
-<blockquote>
-aws iam upload-server-certificate --path /cloudfront/<i>example</i>/ --server-certificate-name <i>example</i> --certificate-body file://<i>example</i>.crt --private-key file://<i>example</i>.aws --certificate-chain file://chain.crt
-</blockquote>
+<pre>aws iam upload-server-certificate --path /cloudfront/<i>example</i>/ --server-certificate-name <i>example</i> --certificate-body file://<i>example</i>.crt --private-key file://<i>example</i>.aws --certificate-chain file://chain.crt</pre>
 
 <h2>Credits</h2>
 
