@@ -52,7 +52,10 @@ A client error (EntityAlreadyExists) occurred when calling the UploadServerCerti
 
 <pre>openssl rsa -in <i>example</i>.key -text &gt; <i>example</i>.aws</pre>
 
-<p>Strip out everything from the <i>example</i>.aws except the RSA key.</p>
+<p>Strip out everything from the <i>example</i>.aws except the RSA key.  The following is a <code>sed</code> command line that 
+  will do it for you, but any text editor will work.</p>
+
+<pre>sed '/-----BEGIN RSA PRIVATE KEY-----/,$!d' <i>example</i>.aws &gt;<i>example</i>.aws.key</pre>
 
 <p>Make the certificate chain.  Download the appropriate intermediate and root certificates and merge them (just with each other, <i>not</i> with your new cert):</p>
 
@@ -60,7 +63,7 @@ A client error (EntityAlreadyExists) occurred when calling the UploadServerCerti
 
 <p>Upload to AWS IAM</p>
 
-<pre>aws iam upload-server-certificate --path /cloudfront/<i>example</i>/ --server-certificate-name <i>example</i> --certificate-body file://<i>example</i>.crt --private-key file://<i>example</i>.aws --certificate-chain file://chain.crt</pre>
+<pre>aws iam upload-server-certificate --path /cloudfront/<i>example</i>/ --server-certificate-name <i>example</i> --certificate-body file://<i>example</i>.crt --private-key file://<i>example</i>.aws.key --certificate-chain file://chain.crt</pre>
 
 <h2>Credits</h2>
 
