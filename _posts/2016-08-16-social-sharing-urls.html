@@ -1,0 +1,63 @@
+---
+author: fileformat
+comments: true
+date: 2016-08-06 12:00:00+00:00
+layout: post
+slug: social-sharing-urls
+title: URLs to directly share on social websites
+tags:
+- social
+- share
+---
+
+<p>Source: <a href="https://github.com/mxstbr/sharingbuttons.io/blob/master/js/stores/AppStore.js">socialsharing.io</a>, starting at line 216.</p>
+
+<p>They can also be determined by following the <a href="http://www.addthis.com/academy/addthis-sharing-endpoints/">AddThis API endpoint</a> and seeing where it goes.</p>
+
+
+<table class="table table-bordered table-striped">
+	<thead>
+		<tr>
+			<th>Site</th>
+			<th>Direct sharing URL</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Facebook</td>
+			<td>https://facebook.com/sharer/sharer.php?u=${URL}</td>
+		</tr>
+		<tr>
+			<td>Twitter</td>
+			<td>https://twitter.com/intent/tweet/?text=${TEXT}&amp;url=${URL}</td>
+		</tr>
+		<tr>
+			<td>Google+</td>
+			<td>https://plus.google.com/share?url=${URL}</td>
+		</tr>
+		<tr>
+			<td>Tumblr</td>
+			<td>https://www.tumblr.com/widgets/share/tool?posttype=link&amp;title=${TEXT}&amp;caption=${TEXT}&amp;content=${URL}&amp;canonicalUrl=${URL}&amp;shareSource=tumblr_share_button</td>
+		</tr>
+		<tr>
+			<td>Pinterest</td>
+			<td>https://pinterest.com/pin/create/button/?url=${URL}&amp;media=${URL}&amp;summary=${TEXT}</td>
+		</tr>
+		<tr>
+			<td>LinkedIn</td>
+			<td>https://www.linkedin.com/shareArticle?mini=true&amp;url=${URL}&amp;title=${TEXT}&amp;summary=${TEXT}&amp;source=${URL}</td>
+		</tr>
+		<tr>
+			<td>Reddit</td>
+			<td>https://reddit.com/submit/?url=${URL}</td>
+		</tr>
+		<tr>
+			<td>XING</td>
+			<td>https://www.xing.com/app/user?op=share;url=${URL};title=${TEXT}</td>
+		</tr>
+		<tr>
+			<td>WhatsApp</td>
+			<td>whatsapp://send?text=${TEXT}%20${URL}</td>
+		</tr>
+	</tbody>
+<table>
