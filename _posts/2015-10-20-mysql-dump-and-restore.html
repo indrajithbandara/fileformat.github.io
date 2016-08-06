@@ -1,0 +1,46 @@
+---
+author: fileformat
+comments: true
+date: 2015-10-20 12:00:00+00:00
+layout: post
+slug: mysql-dump-and-restore
+title: Dumping and restoring a rotated MySQL table
+tags:
+- mysql
+- backup
+---
+
+<p>These are the next steps after <a href="/2012/08/08/rotating-mysql-log-tables/index.html">rotating a MySQL table</a> that is used for data logging.</p>
+
+<p>Overview:</p>
+<ol>
+	<li>Dump the data out of the rotated table.</li>
+	<li>Fix the dump so it referred to the original table.</li>
+	<li>Restore the table into a long-term archive database.</li>
+</ol>
+
+<h3>Dump the table</h3>
+
+<p>I always dump the schema and data separately.  The schema should be done from the original table.</p>
+
+<p>The data is a straightforward <code>mysqldump</code> run:</p>
+
+<pre>mysqldump -u <i>username</i> \
+	-p \
+	--compact \
+	--no-create-info \
+	--skip-triggers \
+	--opt \
+	--result-file=BigTable_<i>YYYYMMDD</i>.sql \
+	<i>logdb</i> BigTable_<i>YYYYMMDD</i>
+</pre>
+
+<h3>Fix the dump's references to the rotated table</h3>
+
+<p>You can do this by hand: I found that the <a href="http://joe-editor.sourceforge.net/">joe editor</a> is able to work with big files much
+better than the other Linux editors I tried.</p>
+
+<p>But the easiest way is with <code>sed</code>:</p>
+
+<pre>sed -i &quot;s/BigTable_<i>YYYYMMDD</i>/BigTable/g&quot; BigTable_<i>YYYYMMDD</i>.sql</pre>
+
