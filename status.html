@@ -5,11 +5,10 @@ title: FileFormatNet Status Page
 <script type="text/javascript">
 
 	var sites = [
-		{ "id": "ffn", "name":"FileFormat.Info", "url": "http://www.fileformat.info/status.json" },
-		{ "id": "lm", "name":"LabelMakr", "url": "http://www.labelmakr.com/status.json" },
-		{ "id": "lp", "name":"LocalePlanet", "url": "http://www.localeplanet.com/status.json" },
-		{ "id": "np", "name":"NumberPlanet", "url": "http://www.numberplanet.com/status.json" },
-		{ "id": "rxp", "name":"RegexPlanet", "url": "http://www.regexplanet.com/status.json" }
+{% for website in site.data.websites %}{% if website.status_url %}
+    { "id": "{{ website.id }}", "name":"{{ website.name }}", "url": "http://{{ website.hostname }}{{ website.status_url }}" },
+{% endif %}{% endfor %}
+		null
 	];
 
 	function makeErrorFn(site)
@@ -47,7 +46,7 @@ title: FileFormatNet Status Page
 	function checkStatus()
 	{
 		$(".updateable").empty();
-		for (var loop = 0; loop < sites.length; loop++)
+		for (var loop = 0; loop < sites.length - 1; loop++)
 		{
 			$("#status-" + sites[loop].id).append($("<img>").attr("src", "http://static.regexplanet.com/images/16x16/spinner.gif"));
 			$.ajax({
@@ -63,7 +62,7 @@ title: FileFormatNet Status Page
 
 	function buildTable()
 	{
-		for (var loop = 0; loop < sites.length; loop++)
+		for (var loop = 0; loop < sites.length - 1; loop++)
 		{
 			var row = $("<tr>");
 			row.append($("<td>").text(sites[loop].name));

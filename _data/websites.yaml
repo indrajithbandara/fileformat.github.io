@@ -1,0 +1,66 @@
+
+- id: rosetta
+  name: Digital Rosetta
+  hostname: www.digitalrosetta.org
+  json_status_url: /status.json
+  tip: An offshoot of FileFormat.Info
+
+- id: ffi
+  name: FileFormat.Info
+  hostname: www.fileformat.info
+  status_url: /status.json
+  tip: FileFormat.Info &#8211; the digital rosetta stone
+
+- id: heatmaptv
+  name: Heatmap.TV
+  hostname: www.heatmap.tv
+  json_status_url: /status.json
+  tip: Google Analytics for multiple properties formatted for TV
+
+- id: labelmakr
+  name: LabelMakr
+  hostname: www.labelmakr.com
+  status_url: /status.json
+  tip: LabelMakr &#8211; make nice labels &amp; envelopes with no software instal
+
+- id: localeplanet
+  name: LocalePlanet
+  hostname: www.localeplanet.com
+  status_url: /status.json
+  tip: JavaScript Localization
+
+- id: a_m_i
+  name: Marcuse.Info
+  hostname: andrew.marcuse.info
+  json_status_url: /status.json
+  tip: My Resume
+
+- id: np
+  name: NumberPlanet
+  hostname: www.numberplanet.com
+  status_url: /status.json
+  tip: NumberPlanet &#8211; every number
+
+- id: r2w
+  name: Redirect To Www
+  hostname: www.redirect2www.com
+  json_status_url: /status.json
+  tip: Static IP that redirects non-www to www
+
+- id: rxp
+  name: RegexPlanet
+  hostname: www.regexplanet.com
+  status_url: /status.json
+  tip: RegexPlanet &#8211; online regular expression (regex) testing
+
+- id: rn
+  name: RoutingNumbers.Info
+  hostname: www.routingnumbers.info
+  status_url: /status.json
+  tip:
+
+- id: vlz
+  name: Vector Logo Zone
+  hostname: www.vectorlogo.zone
+  json_status_url: /status.json
+  tip: Vector logos in standard sizes

@@ -9,3 +9,10 @@ title : FileFormat.Info Blog
 gems:
   - jekyll-redirect-from
 markdown: kramdown
+defaults:
+  -
+    scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "default"

@@ -1,0 +1,9 @@
+---
+title: Cheatsheets
+---
+{% assign sorted_pages = site.pages | sort:'howto' %}
+<table class="table table-bordered table-striped">
+{% for page in sorted_pages %}{% if page.howto %}	<tr><td><a href="{{site.production_url}}{{ page.url }}">{{page.howto}}</a></td></tr>
+{% else %}{% endif %}{% endfor %}
+
+</table>
