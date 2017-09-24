@@ -2,6 +2,7 @@
 # Remember to set production_url in your _config.yml file!
 title : Robots.txt
 layout: none
+noindex: true
 ---
 #
 # robots.txt for blog.fileformat.info
