@@ -3,7 +3,7 @@
   name: Digital Rosetta
   hostname: www.digitalrosetta.org
   json_status_url: /status.json
-  tip: An offshoot of FileFormat.Info
+  tip: A Rosetta Stone for the digital age
 
 - id: ffi
   name: FileFormat.Info
@@ -57,7 +57,19 @@
   name: RoutingNumbers.Info
   hostname: www.routingnumbers.info
   status_url: /status.json
-  tip:
+  tip: NACHA/ACH Bank Routing Numbers
+
+- id: simpleshare
+  name: SimpleShare.IO
+  hostname: simpleshare.io
+  status_url: /status.json
+  tip: Simple script-less share buttons
+
+- id: til
+  name: TIL
+  hostname: til.marcuse.info
+  status_url: /status.json
+  tip: Things I Learned
 
 - id: vlz
   name: Vector Logo Zone
